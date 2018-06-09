@@ -34,16 +34,16 @@ bot.on('message', data => {
 // Respond to Data
 function handleMessage(message) {
 	console.log("handleMessage message", message);
-	if(message.includes(' chuck')) {
+	if(message.match(/^chuck/)) {
 		chuckJoke();
-	} else if(message.includes(' yomama')) {
+	} else if(message.match(/^yomama/)) {
 		yoMommaJoke();
-	} else if(message.includes(' random')) {
+	} else if(message.match(/^random/)) {
 		randomJoke();
 	}
 }
 
-// tell a Chuck Norris joke
+// Tell a Chuck Norris joke
 function chuckJoke() {
 	axios.get('http://api.icndb.com/jokes/random')
 		.then(res => {
@@ -83,7 +83,7 @@ function yoMommaJoke() {
 // Tell a Random Joke
 function randomJoke() {
 	const rand = Math.floor(Math.random() * 2) + 1;
-console.log("random joke rand", rand);
+
 	if(rand == 1) {
 		chuckJoke();
 	} else {
