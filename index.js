@@ -40,6 +40,8 @@ function handleMessage(message) {
 		yoMommaJoke();
 	} else if(message.match(/^random/)) {
 		randomJoke();
+	} else if(message.match(/^help/)) {
+		runHelp();
 	}
 }
 
@@ -89,4 +91,17 @@ function randomJoke() {
 	} else {
 		yoMommaJoke();
 	}
+}
+
+// Show Help Text
+function runHelp() {
+	const params = {
+		icon_emoji: ':question:'
+	};
+
+	bot.postMessageToChannel(
+		'general',
+		"Type @jokebot with either `chuck` or `yomama` or `random` to get a joke",
+		params
+	);
 }
